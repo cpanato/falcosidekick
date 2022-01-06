@@ -144,3 +144,5 @@ docker_signs:
 release:
   github:
   prerelease: auto
+  extra_files:
+    - glob: ./release/falcosidekick-cosign.pub
