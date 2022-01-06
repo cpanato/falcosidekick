@@ -132,6 +132,11 @@ signs:
     cmd: cosign
     args: ["sign-blob", "--output-signature", "${artifact}.sig", "--key=./release/falcosidekick-cosign.key", "${artifact}"]
     artifacts: archive
+  - id: checksum
+    signature: "${artifact}.sig"
+    cmd: cosign
+    args: ["sign-blob", "--output-signature", "${artifact}.sig", "--key=./release/falcosidekick-cosign.key", "${artifact}"]
+    artifacts: checksum
 
 docker_signs:
 - id: falcosidekick
