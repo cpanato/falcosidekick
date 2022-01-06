@@ -53,8 +53,8 @@ dockers:
     image_templates:
       - "falcosecurity/falcosidekick:stable-amd64"
       - "falcosecurity/falcosidekick:{{ .Version }}-amd64"
-      - "public.ecr.aws/falcosecurity/falcosidekick:stable-amd64"
-      - "public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-amd64"
+      # - "public.ecr.aws/falcosecurity/falcosidekick:stable-amd64"
+      # - "public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-amd64"
     build_flag_templates:
       - "--pull"
       - "--label=org.opencontainers.image.created={{.Date}}"
@@ -70,10 +70,10 @@ dockers:
     dockerfile: Dockerfile
     use: buildx
     image_templates:
-      - "falcosecurity/falcosidekick:stable-arm64"
-      - "falcosecurity/falcosidekick:{{ .Version }}-arm64"
-      - "public.ecr.aws/falcosecurity/falcosidekick:stable-arm64"
-      - "public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-arm64"
+      - "ctadeu/falcosidekick:stable-arm64"
+      - "ctadeu/falcosidekick:{{ .Version }}-arm64"
+      # - "public.ecr.aws/falcosecurity/falcosidekick:stable-arm64"
+      # - "public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-arm64"
     build_flag_templates:
       - "--pull"
       - "--label=org.opencontainers.image.created={{.Date}}"
@@ -90,10 +90,10 @@ dockers:
     dockerfile: Dockerfile
     use: buildx
     image_templates:
-      - "falcosecurity/falcosidekick:stable-armv7"
-      - "falcosecurity/falcosidekick:{{ .Version }}-armv7"
-      - "public.ecr.aws/falcosecurity/falcosidekick:stable-armv7"
-      - "public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-armv7"
+      - "ctadeu/falcosidekick:stable-armv7"
+      - "ctadeu/falcosidekick:{{ .Version }}-armv7"
+      # - "public.ecr.aws/falcosecurity/falcosidekick:stable-armv7"
+      # - "public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-armv7"
     build_flag_templates:
       - "--pull"
       - "--label=org.opencontainers.image.created={{.Date}}"
@@ -107,24 +107,24 @@ dockers:
 docker_manifests:
 - name_template: 'falcosecurity/falcosidekick:stable'
   image_templates:
-  - 'falcosecurity/falcosidekick:stable-amd64'
-  - 'falcosecurity/falcosidekick:stable-arm64'
-  - 'falcosecurity/falcosidekick:stable-armv7'
+  - 'ctadeu/falcosidekick:stable-amd64'
+  - 'ctadeu/falcosidekick:stable-arm64'
+  - 'ctadeu/falcosidekick:stable-armv7'
 - name_template: 'falcosecurity/falcosidekick:{{ .Version }}'
   image_templates:
-  - 'falcosecurity/falcosidekick:{{ .Version }}-amd64'
-  - 'falcosecurity/falcosidekick:{{ .Version }}-arm64'
-  - 'falcosecurity/falcosidekick:{{ .Version }}-armv7'
-- name_template: 'public.ecr.aws/falcosecurity/falcosidekick:stable'
-  image_templates:
-  - 'public.ecr.aws/falcosecurity/falcosidekick:stable-amd64'
-  - 'public.ecr.aws/falcosecurity/falcosidekick:stable-arm64'
-  - 'public.ecr.aws/falcosecurity/falcosidekick:stable-armv7'
-- name_template: 'public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}'
-  image_templates:
-  - 'public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-amd64'
-  - 'public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-arm64'
-  - 'public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-armv7'
+  - 'ctadeu/falcosidekick:{{ .Version }}-amd64'
+  - 'ctadeu/falcosidekick:{{ .Version }}-arm64'
+  - 'ctadeu/falcosidekick:{{ .Version }}-armv7'
+# - name_template: 'public.ecr.aws/falcosecurity/falcosidekick:stable'
+#   image_templates:
+#   - 'public.ecr.aws/falcosecurity/falcosidekick:stable-amd64'
+#   - 'public.ecr.aws/falcosecurity/falcosidekick:stable-arm64'
+#   - 'public.ecr.aws/falcosecurity/falcosidekick:stable-armv7'
+# - name_template: 'public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}'
+#   image_templates:
+#   - 'public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-amd64'
+#   - 'public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-arm64'
+#   - 'public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-armv7'
 
 signs:
   - id: falcosidekick
