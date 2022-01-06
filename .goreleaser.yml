@@ -105,12 +105,12 @@ dockers:
       - LICENSE
 
 docker_manifests:
-- name_template: 'falcosecurity/falcosidekick:stable'
+- name_template: 'ctadeu/falcosidekick:stable'
   image_templates:
   - 'ctadeu/falcosidekick:stable-amd64'
   - 'ctadeu/falcosidekick:stable-arm64'
   - 'ctadeu/falcosidekick:stable-armv7'
-- name_template: 'falcosecurity/falcosidekick:{{ .Version }}'
+- name_template: 'ctadeu/falcosidekick:{{ .Version }}'
   image_templates:
   - 'ctadeu/falcosidekick:{{ .Version }}-amd64'
   - 'ctadeu/falcosidekick:{{ .Version }}-arm64'
