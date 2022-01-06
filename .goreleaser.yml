@@ -21,7 +21,7 @@ before:
 #   proxy: true
 
 sboms:
-- artifacts: binary
+- artifacts: archive
 
 builds:
   - id: "falcosidekick"
