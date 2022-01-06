@@ -1,10 +1,27 @@
 project_name: falcosidekick
 
+env:
+  - GO111MODULE=on
+  - CGO_ENABLED=1
+  - DOCKER_CLI_EXPERIMENTAL=enabled
+  - COSIGN_EXPERIMENTAL=true
+
 snapshot:
   name_template: 'latest'
 
 checksum:
   name_template: 'checksums.txt'
+
+# Prevents parallel builds from stepping on each others toes downloading modules
+before:
+  hooks:
+  - go mod tidy
+
+# gomod:
+#   proxy: true
+
+sboms:
+- artifacts: binary
 
 builds:
   - id: "falcosidekick"
@@ -108,6 +125,21 @@ docker_manifests:
   - 'public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-amd64'
   - 'public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-arm64'
   - 'public.ecr.aws/falcosecurity/falcosidekick:{{ .Version }}-armv7'
+
+signs:
+  - id: falcosidekick
+    signature: "${artifact}.sig"
+    cmd: cosign
+    args: ["sign-blob", "--output-signature", "${artifact}.sig", "--key=./release/falcosidekick-cosign.key", "${artifact}"]
+    artifacts: binary
+
+docker_signs:
+- id: falcosidekick
+  cmd: cosign
+  args: ["sign", "--key=./release/falcosidekick-cosign.key", "--recursive", "${artifact}" ]
+  artifacts: manifests
+  stdin: '{{ .Env.COSIGN_PASSWORD }}'
+  output: true
 
 release:
   github:
