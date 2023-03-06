@@ -112,7 +112,7 @@ docker_manifests:
       - 'ghcr.io/cpanato/falcosidekick:stable-amd64'
       - 'ghcr.io/cpanato/falcosidekick:stable-arm64'
       - 'ghcr.io/cpanato/falcosidekick:stable-armv7'
-  - name_template: 'falcosecurity/falcosidekick:{{ .Version }}'
+  - name_template: 'ghcr.io/cpanato/falcosidekick:{{ .Version }}'
     image_templates:
       - 'ghcr.io/cpanato/falcosidekick:{{ .Version }}-amd64'
       - 'ghcr.io/cpanato/falcosidekick:{{ .Version }}-arm64'
