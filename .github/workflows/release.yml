@@ -67,6 +67,7 @@ jobs:
           version: latest
           args: release --clean --timeout 120m
         env:
+          TUF_ROOT: /tmp
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LDFLAGS: ${{ env.GO_FLAGS }}
           GOPATH: /home/runner/go
