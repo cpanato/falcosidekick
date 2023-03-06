@@ -107,7 +107,7 @@ dockers:
       - LICENSE
 
 docker_manifests:
-  - name_template: 'falcosecurity/falcosidekick:stable'
+  - name_template: 'ghcr.io/cpanato/falcosidekick:stable'
     image_templates:
       - 'ghcr.io/cpanato/falcosidekick:stable-amd64'
       - 'ghcr.io/cpanato/falcosidekick:stable-arm64'
