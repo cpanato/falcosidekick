@@ -3,6 +3,8 @@ project_name: falcosidekick
 env:
   - GO111MODULE=on
   - DOCKER_CLI_EXPERIMENTAL=enabled
+  - DOCKER_BUILDKIT=1
+  - BUILDX_PLATFORMS=linux/amd64,linux/arm64,linux/arm/v7
   - COSIGN_YES=true
 
 snapshot:
