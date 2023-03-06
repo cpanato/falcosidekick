@@ -239,17 +239,3 @@ workflows:
           filters:
             branches:
               only: master
-      - release:
-          context:
-            - falco
-            - test-infra
-            - cosign
-          requires:
-            - test
-            - lint
-            - build-image
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /(v)?[0-9]+(\.[0-9]+)*(-.*)*/
